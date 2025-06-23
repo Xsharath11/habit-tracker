@@ -16,6 +16,10 @@ class LoginSerializer(serializers.ModelSerializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)
 
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+
     def validate(self, attrs):
         username = attrs.get('username')
         password = attrs.get('password')
