@@ -38,7 +38,7 @@ elif menu == "Login":
 
         if response.status_code == 200:
             token = response.json().get("token")
-            st.session_state["token"] = token
+            st.session_state["token"] = token # Store the token once logged in
             st.success("Logged in successfully!")
         else:
             st.error(response.json())
