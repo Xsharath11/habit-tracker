@@ -3,7 +3,7 @@ import requests
 import datetime
 
 API_BASE = "http://127.0.0.1:8000/api/"
-API_BASE_AUTH = "http://127.0.0.1/auth"
+API_BASE_AUTH = "http://127.0.0.1:8000/auth/"
 def show_habit_page():
     st.title("Habit Tracker")
 
