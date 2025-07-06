@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_BASE = "http://127.0.0.1:8000/auth/" #TODO: Use st.secrets
+API_BASE = "http://web:8000/auth/" #TODO: Use st.secrets
 
 def show_auth_page():
     st.title("Login or Signup")

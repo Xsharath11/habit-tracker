@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_BASE_URL = "http://127.0.0.1:8000/auth/" # Base URL for signup
+API_BASE_URL = "http://web:8000/auth/" # Base URL for signup
 
 st.title("Habit Tracker")
 
