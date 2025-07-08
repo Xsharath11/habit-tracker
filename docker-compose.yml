@@ -24,5 +24,13 @@ services:
     ports:
       - "5432:5432"
 
+  frontend:
+    build: ./frontend
+    command: streamlit run main.py --server.port=8080 --server.address=0.0.0.0
+    ports: 
+      - "8080:8080"
+    depends_on:
+      - web 
+
 volumes:
   postgres_data:
