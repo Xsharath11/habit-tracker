@@ -20,3 +20,19 @@ class HabitViewSet(viewsets.ViewSet):
             serializer.save(user=request.user)
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
+
+class HabitLogViewset(viewsets.ViewSet):
+    serializer_class = HabitLogSerializer
+
+    def list(self, request):
+        habitlogs = HabitLog.objects.filter(habit__user=request.user)
+        serializer = HabitLogSerializer(habitlogs, many=True)
+        return Response(serializer.data)
+
+    def create(self, request):
+        serializer = HabitLogSerializer(data=request.data)
+        if serializer.is_valid():
+            # habit = serializer.validated_data.get("habit")
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)

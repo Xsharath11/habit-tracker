@@ -8,10 +8,18 @@ class HabitSerializer(serializers.ModelSerializer):
         read_only_fields = ['id','user', 'created_at']
 
 class HabitLogSerializer(serializers.ModelSerializer):
+    habit_name = serializers.CharField(source='habit.name', read_only=True)
     class Meta:
         model = HabitLog
-        fields = ['id', 'habit','date','status']
+        fields = ['id', 'habit', 'habit_name','date','status']
         read_only_fields = ['id']
+        validators = [
+            serializers.UniqueTogetherValidator(
+                queryset=HabitLog.objects.all(),
+                fields=['habit', 'date'],
+                message = "Log for this day already exists."
+            )
+        ]
 
     def validate(self, attrs: dict) -> dict:
         habit = attrs.get("habit")

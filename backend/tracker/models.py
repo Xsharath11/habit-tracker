@@ -18,7 +18,7 @@ class HabitLog(models.Model):
 
     habit = models.ForeignKey(Habit, on_delete=models.CASCADE)
     date = models.DateField()
-    status = models.CharField(max_length=10, choices=Status.choices, default="NOT-DONE")
+    status = models.CharField(max_length=10, choices=Status.choices, default=Status.NOT_DONE)
 
     def __str__(self):
         return f"{self.habit.name} - {self.date} - {self.status}"
