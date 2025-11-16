@@ -22,3 +22,6 @@ class HabitLog(models.Model):
 
     def __str__(self):
         return f"{self.habit.name} - {self.date} - {self.status}"
+
+    print("test123")
+
